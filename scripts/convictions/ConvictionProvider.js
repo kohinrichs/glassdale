@@ -1,7 +1,7 @@
-let crimes = []
+let convictions = []
 
-export const useCrimes = () => {
-    return crimes.slice()
+export const useConvictions = () => {
+    return convictions.slice()
 }
 
 export const getConvictions = () => {
@@ -10,7 +10,7 @@ export const getConvictions = () => {
         .then(
             parsedConvictions => {
                 console.table(parsedConvictions)
-                crimes = parsedConvictions
+                convictions = parsedConvictions
             }
         )
 }
