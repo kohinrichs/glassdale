@@ -1,5 +1,7 @@
-import { getNotes, useNotes } from "./NoteProvider.js";
+import { getNotes, useNotes } from "./NoteDataProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
+
+let visible = false
 
 // Query the DOM for the element that your notes will be added to 
 const contentTarget = document.querySelector(".noteList")
@@ -9,12 +11,27 @@ const eventHub = document.querySelector(".container")
 
 // Removed custonmEvent since it's a parameter that isn't being used.
 eventHub.addEventListener("showNotesClicked", () => {
-    NoteList()
+    if (visible === false) {
+        NoteList()
+        visible = true
+    } else {
+        contentTarget.innerHTML = ""
+        visible = false
+    }
+
 })
 
-eventHub.addEventListener("notesStateChanged", () => {
-    NoteList()
+eventHub.addEventListener("noteStateChanged", () => {
+    if (visible === true) {
+        NoteList()
+    }
 })
+
+eventHub.addEventListener("resetForm", () => {
+    document.querySelector("#author").value = ""
+    document.querySelector("#text").value = ""
+    document.querySelector("#suspect").value = ""
+    })
 
 const render = (noteArray) => {
     const allNotesConvertedToStrings = noteArray.map(

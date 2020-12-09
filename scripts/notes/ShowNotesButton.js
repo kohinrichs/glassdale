@@ -8,6 +8,6 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-export const ShowNoteButton = () => {
+export const ShowNotesButton = () => {
     contentTarget.innerHTML = "<button id='showNotes'>Show Notes</button>"
 }

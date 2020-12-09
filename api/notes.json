@@ -1,7 +1,18 @@
 {
-    "notes" :[
-        {
-            
-        }
-    ]
+  "notes": [
+    {
+      "timestamp": "02/23/20",
+      "author": "Braden Stoltenberg",
+      "text": "This suspect is a mean son of a biscuit eater.",
+      "suspect": "Michel Stamm",
+      "id": 1
+    },
+    {
+      "timestamp": 1607534127545,
+      "author": "Marques Balistreri",
+      "text": "Need to follow up with parole officer.",
+      "suspect": "Nathanael Champlin",
+      "id": 2
+    }
+  ]
 }

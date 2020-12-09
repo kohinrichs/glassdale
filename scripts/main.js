@@ -1,15 +1,21 @@
 import { CriminalList } from "./criminals/CriminalList.js"
 import { ConvictionSelect } from "./convictions/ConvictionSelect.js"
 import { OfficerSelect } from "./officers/OfficerSelect.js"
-import { ShowNotesButton } from "./notes./ShowNotesButton"
+import { NoteForm } from "./notes/NoteForm.js";
+import { ShowNotesButton } from "./notes/ShowNotesButton.js"
+import "./notes/NoteList.js"
 
 // Allows us to tie in module to main.js without having to calling anything. Almost like  script tag -> browser will go get and evalute the file. Tells browser it exists, so it should show up in your sources.
 
-import "./notes/NoteList.js"
+
+
 
 CriminalList();
 ConvictionSelect();
 OfficerSelect();
+
+NoteForm();
+
 
 ShowNotesButton();
 
