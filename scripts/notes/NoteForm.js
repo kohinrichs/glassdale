@@ -8,8 +8,9 @@ const contentTarget = document.querySelector(".noteFormContainer")
 const eventHub = document.querySelector(".container")
 
 eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "saveNote") {
 
+    if (clickEvent.target.id === "saveNote") {
+        
         // Need to gather the data from the form
         let author = document.querySelector("#author").value
         let text = document.querySelector("#text").value
@@ -17,7 +18,7 @@ eventHub.addEventListener("click", clickEvent => {
         
         // Make a new object representation of a note
         const newNote = {
-            timestamp:Date.now(),
+            timestamp: Date.now(),
             author: author,
             text: text,
             suspect: suspect 
@@ -25,6 +26,7 @@ eventHub.addEventListener("click", clickEvent => {
 
         // Change API state and application state
         saveNote(newNote)
+       
     }
 
     const customEvent = new CustomEvent("resetForm")

@@ -33,3 +33,19 @@ ShowNotesButton();
 // Which modules are involved?
     // CriminalList
     // ConvictionSelect
+
+
+    // Alibis Chapter 8
+    // - Add a button to each criminal representation in Criminal.js
+    // Add new component to display known associates: AssociatesDisplay
+        // job: creat HTML rep of associates and alibis
+
+    // API coming from criminals 
+
+    // Dispatch custn event from Criinals.js to alert other modules that the associates btn has been clcked
+    // CRIMINAL HTML converter comp - listening for click and emitting event (known associates clicked)
+    //list for knownAssocialtedCloicked Event on AssociateDisplay
+    // associates display listening for event 
+    // need to send criminal ID with it
+    // Associates Display componet needs to FIND the criminal with the matching Id
+    // Loop over the found criminal's known_associautes and display them 

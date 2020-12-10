@@ -1,5 +1,3 @@
-// need to export GetNotes
-
 const eventHub = document.querySelector(".container")
 
 let notes = []
@@ -7,6 +5,7 @@ let notes = []
 export const useNotes = () => notes.slice() 
 
 const dispatchStateChangeEvent = () => {
+    debugger
     const noteStateChangedEvent = new CustomEvent("noteStateChanged")
     eventHub.dispatchEvent(noteStateChangedEvent)
 }
