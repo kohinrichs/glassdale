@@ -29,6 +29,7 @@ eventHub.addEventListener("click", clickEvent => {
        
     }
 
+    // Is this a bad idea? Is this stacking eventListeners?
     const customEvent = new CustomEvent("resetForm")
         eventHub.dispatchEvent(customEvent)
 

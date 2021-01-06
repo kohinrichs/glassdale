@@ -1,3 +1,25 @@
+const eventHub = document.querySelector(".container")
+
+eventHub.addEventListener("click", (event) => {
+    const [splitID, indexOne] = event.target.id.split("--")
+    if ("associates" === splitID) {
+        const customEvent = new CustomEvent("associatesBtnClicked", {
+            detail: {
+                attractionDetailsChosen: indexOne
+            }
+        })
+
+    // Trying to do this a different way 
+    // if (event.target.id.includes("associates--")) {
+    //     const customEvent = new CustomEvent("associatesBtnClicked", {
+    //         detail: {
+    //             clickedCriminalId: event.target.id.split("--")[1]
+    //         }
+    //     })
+        eventHub.dispatchEvent(customEvent)
+    }
+})
+
 export const Criminal = (criminal) => {
     return `
             <section class= "criminal">
@@ -6,6 +28,7 @@ export const Criminal = (criminal) => {
                 <div class= "criminal__conviction">Crime:${criminal.conviction}</div>
                 <div class= "criminal__term-start">Term start: ${new Date(criminal.incarceration.start).toLocaleDateString('en-US')}</div>
                 <div class= "criminal__term-end">Term end: ${new Date(criminal.incarceration.end).toLocaleDateString('en-US')}</div>
+                <button id="associates--${criminal.id}">Associate Alibis</button>
             </section>
         `
 }

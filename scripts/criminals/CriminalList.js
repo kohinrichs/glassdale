@@ -3,6 +3,7 @@ import { Criminal } from './CriminalComponent.js'
 import { useConvictions } from '../convictions/ConvictionProvider.js'
 import { useOfficers } from "../officers/OfficerDataProvider.js"
 
+
 // BELOW IS THE NEW EVENT HUB INFORMATION
 
 const contentElement = document.querySelector(".criminalsContainer")
