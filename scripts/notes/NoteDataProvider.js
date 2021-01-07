@@ -5,7 +5,6 @@ let notes = []
 export const useNotes = () => notes.slice() 
 
 const dispatchStateChangeEvent = () => {
-    debugger
     const noteStateChangedEvent = new CustomEvent("noteStateChanged")
     eventHub.dispatchEvent(noteStateChangedEvent)
 }

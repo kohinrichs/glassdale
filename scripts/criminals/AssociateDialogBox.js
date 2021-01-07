@@ -8,21 +8,22 @@ eventHub.addEventListener("associatesBtnClicked", (event) => {
     // const dialogText = document.querySelector("#associatesDialog__text")
 
     const clickedCriminal = useCriminals().find(
-        (criminal) => criminal.id === parseInt(event.detail.clickedCriminalId)
+        (criminal) => criminal.id === event.detail.clickedCriminalId
     )
-    debugger
 
     contentTarget.showModal()
     render(clickedCriminal)
 })
 
-   let render = (clickedCriminal) => {
+  const render = (criminal) => {
     contentTarget.innerHTML =
 `
             <div class= "associate">
-                <h3 class= "criminal__name">${clickedCriminal.name}</h3>
-                <div class= "criminal__assoicateName">: ${clickedCriminal.known_associates.name}</div>
-                <div class= "criminal__associateAlibi">:${clickedCriminal.known_associates.alibi}</div>
+                <h3 class= "criminal__name">${criminal.name}</h3>
+                ${criminal.known_associates.map( (associate) => `
+                    <div class="criminal__associateName"> ${associate.name}</div>
+                    <div class="criminal__associateAlibi">${associate.alibi}</div>`
+                                ).join("")}
                 <button id="closeButton">Close</button>
             </div>
         `

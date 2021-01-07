@@ -1,5 +1,6 @@
 import { getNotes, useNotes } from "./NoteDataProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
+import { useCriminals } from "../criminals/CriminalDataProvider.js"
 
 let visible = false
 
@@ -33,11 +34,18 @@ eventHub.addEventListener("resetForm", () => {
     document.querySelector("#suspect").value = ""
     })
 
-const render = (noteArray) => {
+const render = (noteArray, criminals) => {
     const allNotesConvertedToStrings = noteArray.map(
         // convert the notes objects to HTML with NoteHTMLConverter 
         // Could also be written like -> ((note) => NoteHTMLConverter(note).join)
         (note) => {
+            const associatedCriminal = criminals.find(
+                (criminal) => {
+                    return criminal.id === note.criminalId
+                }
+            )
+            note.criminalName = associatedCriminal.name
+
             return NoteHTMLConverter(note)
         }
         ).join("")
@@ -47,9 +55,10 @@ const render = (noteArray) => {
 
 // Standard list function you're used to writing by now. BUT, don't call this in main.js! Why not? UseNotes is our application state. 
 export const NoteList = () => {
+    let criminals = useCriminals()
     getNotes()
         .then(() => {
             const allNotes = useNotes()
-            render(allNotes)
+            render(allNotes, criminals)
         })
 }
