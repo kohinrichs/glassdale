@@ -1,6 +1,7 @@
-import { getNotes, useNotes } from "./NoteDataProvider.js";
+import { getNotes, useNotes, deleteNote } from "./NoteDataProvider.js";
 import { NoteHTMLConverter } from "./Note.js";
 import { useCriminals } from "../criminals/CriminalDataProvider.js"
+
 
 let visible = false
 
@@ -28,11 +29,21 @@ eventHub.addEventListener("noteStateChanged", () => {
     }
 })
 
-eventHub.addEventListener("resetForm", () => {
-    document.querySelector("#author").value = ""
-    document.querySelector("#text").value = ""
-    document.querySelector("#suspect").value = ""
-    })
+// New EventListener for DELETING notes
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("deleteNote--")) {
+        const [prefix, noteId] = clickEvent.target.id.split("--")
+
+       deleteNote(noteId)
+    }
+})
+
+eventHub.addEventListener("resetForm", clickEvent => {
+        document.querySelector("#author").value = ""
+        document.querySelector("#text").value = ""
+        document.querySelector("#suspect").value = ""
+    }
+)
 
 const render = (noteArray, criminals) => {
     const allNotesConvertedToStrings = noteArray.map(
