@@ -1,4 +1,5 @@
 import { saveNote } from "./NoteDataProvider.js"
+import { useCriminals, getCriminals } from "../criminals/CriminalDataProvider.js"
 
 const contentTarget = document.querySelector(".noteFormContainer")
 
@@ -14,14 +15,14 @@ eventHub.addEventListener("click", clickEvent => {
         // Need to gather the data from the form
         let author = document.querySelector("#author").value
         let text = document.querySelector("#text").value
-        let suspect = document.querySelector("#suspect").value
+        let criminalId = parseInt(document.querySelector("#suspect").value)
         
         // Make a new object representation of a note
         const newNote = {
             timestamp: Date.now(),
             author: author,
             text: text,
-            suspect: suspect 
+            criminalId: criminalId 
         }
 
         // Change API state and application state
@@ -29,22 +30,37 @@ eventHub.addEventListener("click", clickEvent => {
        
     }
 
+    // Is this a bad idea? Is this stacking eventListeners?
     const customEvent = new CustomEvent("resetForm")
         eventHub.dispatchEvent(customEvent)
 
 })
 
 const render = () => {
+    const criminalCollection = useCriminals()
+
     contentTarget.innerHTML = `
         <div class="form">
             <input type="text" id="author" placeholder="author name">
             <textarea id="text" placeholder="note text"></textarea>
-            <input type="text" id="suspect" placeholder="suspect name">
+            
+            <select class="dropdown" id="suspect">
+                <option value="0">Please select a suspect...</option>
+                ${
+                    criminalCollection.map(
+                        (criminal) => `
+                            <option value=${criminal.id}>
+                                ${criminal.name}
+                            </option>
+                    `)
+                }
+            </select>
             <button id="saveNote">Save Note</button>
         </div>
     `
 }
 
 export const NoteForm = () => {
-    render()
+    getCriminals()
+    .then( () => render())
 }

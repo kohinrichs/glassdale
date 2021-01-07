@@ -4,14 +4,14 @@
       "timestamp": "02/23/20",
       "author": "Braden Stoltenberg",
       "text": "This suspect is a mean son of a biscuit eater.",
-      "suspect": "Michel Stamm",
+      "criminalId": 5,
       "id": 1
     },
     {
       "timestamp": 1607534127545,
       "author": "Marques Balistreri",
       "text": "Need to follow up with parole officer.",
-      "suspect": "Nathanael Champlin",
+      "criminalId": 3,
       "id": 2
     }
   ]
