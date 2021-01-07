@@ -28,13 +28,12 @@ eventHub.addEventListener("click", clickEvent => {
         // Change API state and application state
         saveNote(newNote)
        
-    }
-
-    // Is this a bad idea? Is this stacking eventListeners?
-    const customEvent = new CustomEvent("resetForm")
+        // Is this a bad idea? Is this stacking eventListeners?
+        const customEvent = new CustomEvent("resetForm")
         eventHub.dispatchEvent(customEvent)
-
+    }
 })
+
 
 const render = () => {
     const criminalCollection = useCriminals()
