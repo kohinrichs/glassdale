@@ -3,7 +3,10 @@ import { ConvictionSelect } from "./convictions/ConvictionSelect.js"
 import { OfficerSelect } from "./officers/OfficerSelect.js"
 import { NoteForm } from "./notes/NoteForm.js";
 import { ShowNotesButton } from "./notes/ShowNotesButton.js"
+import { ShowWitnessListButton } from "./witnesses/ShowWitnessesButton.js"
+
 import "./notes/NoteList.js"
+import "./witnesses/WitnessList.js"
 
 import "./criminals/AssociateDialogBox.js"
 
@@ -20,6 +23,7 @@ NoteForm();
 
 
 ShowNotesButton();
+ShowWitnessListButton();
 
 
 
